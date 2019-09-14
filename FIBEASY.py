@@ -1,14 +1,15 @@
-def printFibonacciNumbers(n):
-    f1 = 0
-    f2 = 1
-    if (n < 1):
-        return
-    for x in range(0, n):
-        print(f2, end=" ")
-        next = f1 + f2
-        f1 = f2
-        f2 = next
+import math
 
+if __name__ == '__main__':
+    t = int(input())
 
-# Driven code
-printFibonacciNumbers(7)
+    while t != 0:
+        n = int(input())
+
+        fib = [0, 1, 1, 2, 3, 5, 8, 3, 1, 4, 5, 9, 4, 3, 7, 0, 7, 7, 4, 1, 5, 6, 1, 7, 8, 5, 3, 8, 1, 9, 0, 9, 9, 8, 7,
+               5, 2, 7, 9, 6, 5, 1, 6, 7, 3, 0, 3, 3, 6, 9, 5, 4, 9, 3, 2, 5, 7, 2, 9, 1]
+
+        pos = 2 ** int(math.log(n % 60, 2)) % 60
+        print(fib[pos - 1])
+
+        t -= 1

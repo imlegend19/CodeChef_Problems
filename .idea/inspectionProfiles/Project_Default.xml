@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="str.__sub__" />
+          <option value="dict.iteritems" />
         </list>
       </option>
     </inspection_tool>
