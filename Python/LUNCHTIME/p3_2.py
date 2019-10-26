@@ -4,49 +4,34 @@ if __name__ == '__main__':
     t = int(input())
     while t:
         n, k, p = map(int, input().split())
-        arr = [int(_) for _ in input().split()]
+        a = [int(_) for _ in input().split()]
 
         if k % 2 != 0:
             if p == 0:
-                print(max(arr))
+                print(max(a))
             else:
-                print(min(arr))
+                print(min(a))
         else:
             if p == 0:
-                mx = max(arr)
-                mx_2 = -1
-                for i in range(n):
-                    if i == 0:
-                        if arr[i] == mx:
-                            mx_2 = arr[i + 1]
-                    elif i == n-1:
-                        if arr[i] == mx:
-                            if arr[i - 1] > mx_2:
-                                mx_2 = arr[i - 1]
-                    else:
-                        if arr[i] == mx:
-                            val = min(arr[i + 1], arr[i - 1])
-                            if val > mx_2:
-                                mx_2 = val
+                mx = max(a[1], a[n-2])
+                for i in range(1, n-1):
+                    mx = max(mx, min(a[i-1], a[i+1]))
 
-                print(mx_2)
+                print(mx)
             else:
-                mn = min(arr)
-                mn_2 = sys.maxsize
-                for i in range(n):
-                    if i == 0:
-                        if arr[i] == mn:
-                            mn_2 = arr[i + 1]
-                    elif i == n-1:
-                        if arr[i] == mn:
-                            if arr[i - 1] < mn_2:
-                                mn_2 = arr[i - 1]
-                    else:
-                        if arr[i] == mn:
-                            val = max(arr[i + 1], arr[i - 1])
-                            if val < mn_2:
-                                mn_2 = val
+                mn = min(a[1], a[n-2])
+                for i in range(1, n-1):
+                    mn = min(mn, max(a[i-1], a[i+1]))
 
-                print(mn_2)
+                print(mn)
 
         t -= 1
+
+# 7 4 1
+# 2 4 3 2 3 4 1
+
+# 6 4 0
+# 1 3 1 1 2 1
+
+# 7 4 0
+# 2 4 3 2 3 4 2
